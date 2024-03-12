@@ -1,6 +1,6 @@
-﻿# 9102 Scouting 2024
-
-## Codée par Antoine aka Pepo Rwaou
+APPLiCATION INDISPONIBLE POUR LE MOMENT - Incomplète
+----
+# 9102 Scouting 2024
 
 L'application est destinée à l'équipe de robotique CyborgBulls pour le Scouting de la Saison 2023-24 de FIRST Robotics Competition.
 
@@ -15,3 +15,7 @@ Malgré les licences libres, le contenu de l'application CyborgBulls reste restr
 ## How to use ? 
 
 ...
+
+## Disponibilité du Code Source: 
+
+Certaines applications, en raison de la taille, ont été retirées. En cas de question, vous pouvez envoyer un mail à nakanosan@gmx.fr
