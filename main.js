@@ -3,6 +3,8 @@ const { app, BrowserWindow, Menu, shell } = require('electron');
 let mainWindow;
 let loadingWindow;
 let PitType = "Inconnue" 
+let PitName = ""
+let RecapPitName = PitName
 //let maintenanceWindow; // Ajout de cette ligne
 //////////
 
@@ -17,6 +19,7 @@ const createLoadingWindow = () => {
         transparent: true,
         webPreferences: {
             nodeIntegration: true,
+            frame: false,
         }
     });
 
@@ -101,7 +104,12 @@ const createMainWindow = () => {
                 {
                     label: 'Scout Zone: Inconnue' ,
                     role: ''
-                }
+                },
+                { type: 'separator'},
+                {
+                    label:  'État de la licence: Invalide',
+                    role: ''
+                },
             ]
         },
         {
@@ -133,6 +141,14 @@ app.on('activate', () => {
     }
 });
 
+//// CHAMP RESERVE AUX FONCTIONS
 function commentaire_main() {
     console.log('Unable to retrieve data from scouting.cyborgbulls.fr')
 }
+
+//// FIN DE CHAMP
+
+//// CHAMP ADMIS POUR LES CONSOLE.LOG 
+console.log("Le Menu 'AIDE' est inaccessible/introuvable")
+
+//// FIN DE CHAMP
