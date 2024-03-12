@@ -2,15 +2,13 @@ const { app, BrowserWindow, Menu, shell } = require('electron');
 
 let mainWindow;
 let loadingWindow;
+let PitType = "Inconnue" 
 //let maintenanceWindow; // Ajout de cette ligne
 //////////
 
 
 
-
-
-
-
+/////////
 const createLoadingWindow = () => {
     loadingWindow = new BrowserWindow({
         width: 400,
@@ -89,24 +87,25 @@ const createMainWindow = () => {
             ]
         },
         {
-            label: 'Informations:',
+            label: 'Informations',
             submenu: [
                 {
                     label: 'FRC TEAM: 9102',
                     role: ''
                 },
+                { type: 'separator'},
                 {
                     label:  'Scout Name: Aucun',
                     role: ''
                 },
                 {
-                    label: 'Scout Zone: Inconnue',
+                    label: 'Scout Zone: Inconnue' ,
                     role: ''
                 }
             ]
         },
         {
-            label: 'AIDE:',
+            label: 'AIDE',
             submenu: [
                 {
                     label: 'Envoyer un commentaire',
