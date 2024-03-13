@@ -16,3 +16,8 @@ function navigateToMatchScouting() {
     console.log('Navigating to Match Scouting');
     // win
 }
+
+/// CHAMP ADMIS POUR LES CONSOLE.LOG
+console.error("Licence: Absente")
+
+/// FIN DE CHAMP
