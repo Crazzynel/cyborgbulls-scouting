@@ -11,7 +11,7 @@ function showMaintenancePage() {
             }
         });
 
-        maintenanceWindow.loadFile('pop-up.html');
+        maintenanceWindow.loadFile('/functions/start/pop-up.html');
 
         maintenanceWindow.on('closed', () => {
             maintenanceWindow = null;

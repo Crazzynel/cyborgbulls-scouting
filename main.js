@@ -6,7 +6,7 @@ let PitType = "Inconnue"
 let PitName = ""
 let RecapPitName = PitName
 //let maintenanceWindow; // Ajout de cette ligne
-//////////
+////////// servor infrastructure
 
 
 
@@ -60,7 +60,7 @@ const createMainWindow = () => {
                 {
                     label: 'Retour à l\'accueil',
                     click: () => {
-                        mainWindow.loadFile('./index.html');
+                        mainWindow.loadFile('./index.html');  // Permet d'effectuer la recharge d'une page
                     } 
                 },
                 { type: 'separator' },
