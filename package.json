@@ -3,7 +3,8 @@
   "version": "1.0.4",
   "main": "main.js",
   "scripts": {
-      "start": "electron ."
+      "start": "electron .",
+      "build": "electron-builder"
   },
   "devDependencies": {
     "csv-writer": "^1.6.0",
