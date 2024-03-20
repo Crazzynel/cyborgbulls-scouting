@@ -1,4 +1,5 @@
 const { app, BrowserWindow, Menu, shell } = require('electron');
+const path = require('path');
 
 let mainWindow;
 let loadingWindow;
@@ -6,9 +7,7 @@ let PitType = "Inconnue"
 let PitName = ""
 let RecapPitName = PitName
 //let maintenanceWindow; // Ajout de cette ligne
-////////// servor infrastructure
-
-
+////////// Discord Main 
 
 /////////
 const createLoadingWindow = () => {
@@ -41,6 +40,10 @@ const createMainWindow = () => {
         height: 600,
         show: false,
         //icon: ''
+        webPreferences: {
+            preload: path.join(__dirname, 'preload.js') // Spécifiez le chemin vers preload.js
+          }
+      
     });
 
     mainWindow.loadFile('index.html');
@@ -86,7 +89,13 @@ const createMainWindow = () => {
                 {
                     label: 'Passer en plein écran',
                     role: 'togglefullscreen'
+                },
+                {
+                    label:'Developer Console',
+                    role: 'toggleDevTools'
                 }
+
+
             ]
         },
         {

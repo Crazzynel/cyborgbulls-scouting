@@ -1,0 +1,13 @@
+appId: com.cyborgbulls.scouting
+productName: CyborgBulls Scouting
+directories:
+  output: build
+win:
+  target: nsis
+  icon: 9102.png
+mac:
+  target: dmg
+  icon: 9102.png
+linux:
+  target: AppImage
+  icon: 9102.png
