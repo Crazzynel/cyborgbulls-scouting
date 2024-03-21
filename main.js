@@ -39,11 +39,8 @@ const createMainWindow = () => {
         width: 800,
         height: 600,
         show: false,
-        //icon: ''
-        webPreferences: {
-            preload: path.join(__dirname, 'preload.js') // Spécifiez le chemin vers preload.js
-          }
-      
+        //icon: '9102.png'
+        // Le logo est facultatif vu qu'il est déjà défini dans electron-builder.yaml
     });
 
     mainWindow.loadFile('index.html');
@@ -154,10 +151,5 @@ app.on('activate', () => {
 function commentaire_main() {
     console.log('Unable to retrieve data from scouting.cyborgbulls.fr')
 }
-
-//// FIN DE CHAMP
-
-//// CHAMP ADMIS POUR LES CONSOLE.LOG 
-console.log("Le Menu 'AIDE' est inaccessible/introuvable")
 
 //// FIN DE CHAMP

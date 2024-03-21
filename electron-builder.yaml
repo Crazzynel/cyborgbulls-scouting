@@ -3,7 +3,7 @@ productName: CyborgBulls Scouting
 directories:
   output: build
 win:
-  target: nsis
+  target: exe
   icon: 9102.png
 mac:
   target: dmg
