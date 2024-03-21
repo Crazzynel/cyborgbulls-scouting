@@ -1,5 +1,4 @@
-const { app, BrowserWindow, Menu, shell } = require('electron');
-const path = require('path');
+const { app, BrowserWindow, Menu } = require('electron');
 
 let mainWindow;
 let loadingWindow;
@@ -117,17 +116,7 @@ const createMainWindow = () => {
                     role: ''
                 },
             ]
-        },
-        {
-            label: 'AIDE',
-            submenu: [
-                {
-                    label: 'Envoyer un commentaire',
-                    role: commentaire_main()
-                }
-            ]
         }
-
     ]);
 
     Menu.setApplicationMenu(customMenu);

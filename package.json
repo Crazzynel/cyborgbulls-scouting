@@ -70,7 +70,6 @@
     "delayed-stream": "^1.0.0",
     "detect-node": "^2.1.0",
     "dir-compare": "^3.3.0",
-    "discord-rpc-electron": "^4.0.1",
     "dmg-builder": "^24.13.3",
     "dotenv": "^9.0.2",
     "dotenv-expand": "^5.1.0",
@@ -233,6 +232,6 @@
     "Scouting",
     "9102"
   ],
-  "author": "Antoine for CyborgBulls",
+  "author": "Antoine CyborgBulls",
   "license": "UNLICENSED"
 }
