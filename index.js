@@ -1,8 +1,7 @@
 function saveScouterName() {
     const scouterName = document.getElementById('scouterName').value;
     console.log(scouterName)
-    // Tu peux utiliser scouterName comme tu le souhaites, par exemple, le stocker dans une variable globale.
-    
+// Variable scoutername supposée enregistrer le nom du scouteur.
 }
 
 function navigateToPitScouting() {
@@ -19,7 +18,7 @@ function navigateToMatchScouting() {
     // win
 }
 
-/// CHAMP ADMIS POUR LES CONSOLE.LOG - LOGS MANUEL permettant de retrouver les données
+/// CHAMP ADMIS POUR LES CONSOLE.LOG - LOGS MANUEL permettant de se retrouver dans les modes de developpement.
 console.error("Licence: Absente")
 
 /// FIN DE CHAMP
