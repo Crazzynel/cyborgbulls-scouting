@@ -1,4 +1,5 @@
 const { app, BrowserWindow, Menu } = require('electron');
+const { autoUpdater } = require('electron-updater')
 
 let mainWindow;
 let loadingWindow;
@@ -6,7 +7,7 @@ let PitType = "Inconnue"
 let PitName = ""
 let RecapPitName = PitName
 //let maintenanceWindow; // Ajout de cette ligne
-////////// Discord Main 
+////////// Auto Updater 
 
 /////////
 const createLoadingWindow = () => {
