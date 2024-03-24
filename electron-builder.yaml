@@ -4,7 +4,7 @@ copyright:  Copyright © 2024 Antoine FC
 directories:
   output: build
 win:
-  target: exe
+  target: nsis
   icon: 9102.png
 mac:
   target: dmg
