@@ -10,57 +10,8 @@ let RecapPitName = PitName
 ////////// Auto Updater - Bêta
 autoUpdater.setFeedURL({
     provider: 'generic',
-    url: 'https://nisuky-devs.github.io/app/cyborgbulls/application/updater/updates.json'
+    url: 'https://nisuky-devs.github.io/app/cyborgbulls/application/updater/updates.yml'
 })
-///
-autoUpdater.on('checking-for-update', () => {
-    dialog.showMessageBox({
-        type: 'info',
-        title: 'Vérification des mises à jour',
-        message: 'La vérification des mises à jour est en cours...',
-    });
-});
-
-autoUpdater.on('update-available', () => {
-    dialog.showMessageBox({
-        type: 'info',
-        title: 'Mise à jour disponible',
-        message: 'Une mise à jour est disponible. Le téléchargement est en cours',
-    });
-});
-
-autoUpdater.on('update-not-available', () => {
-    dialog.showMessageBox({
-        type: 'info',
-        title: 'Pas de mise à jour disponible',
-        message: 'Votre application est à jour. Aucune mise à jour n\'est requise.',
-    });
-});
-
-autoUpdater.on('error', (error) => {
-    dialog.showErrorBox('Erreur de mise à jour', error == null ? "unknown" : (error.stack || error).toString());
-});
-
-autoUpdater.on('download-progress', (progressObj) => {
-    const logMessage = `Téléchargement de ${progressObj.percent}% (${progressObj.transferred}/${progressObj.total} octets)`;
-    console.log(logMessage);
-});
-
-autoUpdater.on('update-downloaded', () => {
-    dialog.showMessageBox({
-        type: 'info',
-        title: 'Mise à jour téléchargée',
-        message: 'La mise à jour a été téléchargée et est prête à être installée. Voulez-vous redémarrer l\'application pour appliquer la mise à jour maintenant ?',
-        buttons: ['Redémarrer', 'Plus tard']
-    }).then((response) => {
-        if (response.response === 0) {
-            autoUpdater.quitAndInstall();
-        }
-    });
-});
-
-autoUpdater.checkForUpdatesAndNotify();
-
 ///
 
 /////////
@@ -174,7 +125,55 @@ const createMainWindow = () => {
     Menu.setApplicationMenu(customMenu);
 };
 
-app.on('ready', createLoadingWindow);
+app.on('ready', () => {
+    autoUpdater.checkForUpdatesAndNotify();
+});
+
+autoUpdater.on('checking-for-update', () => {
+    dialog.showMessageBox({
+        type: 'info',
+        title: 'Vérification des mises à jour',
+        message: 'La vérification des mises à jour est en cours...',
+    });
+});
+
+autoUpdater.on('update-available', () => {
+    dialog.showMessageBox({
+        type: 'info',
+        title: 'Mise à jour disponible',
+        message: 'Une mise à jour est disponible. Le téléchargement est en cours',
+    });
+});
+
+autoUpdater.on('update-not-available', () => {
+    dialog.showMessageBox({
+        type: 'info',
+        title: 'Pas de mise à jour disponible',
+        message: 'Votre application est à jour. Aucune mise à jour n\'est requise.',
+    });
+});
+
+autoUpdater.on('error', (error) => {
+    dialog.showErrorBox('Erreur de mise à jour', error == null ? "unknown" : (error.stack || error).toString());
+});
+
+autoUpdater.on('download-progress', (progressObj) => {
+    const logMessage = `Téléchargement de ${progressObj.percent}% (${progressObj.transferred}/${progressObj.total} octets)`;
+    console.log(logMessage);
+});
+
+autoUpdater.on('update-downloaded', () => {
+    dialog.showMessageBox({
+        type: 'info',
+        title: 'Mise à jour téléchargée',
+        message: 'La mise à jour a été téléchargée et est prête à être installée. Voulez-vous redémarrer l\'application pour appliquer la mise à jour maintenant ?',
+        buttons: ['Redémarrer', 'Plus tard']
+    }).then((response) => {
+        if (response.response === 0) {
+            autoUpdater.quitAndInstall();
+        }
+    });
+});
 
 app.on('window-all-closed', () => {
     if (process.platform !== 'darwin') {
