@@ -1,5 +1,7 @@
-const { app, BrowserWindow, Menu } = require('electron');
+const { app, BrowserWindow, Menu, dialog } = require('electron');
 const { autoUpdater } = require('electron-updater')
+const { path } = require('path')
+
 
 let mainWindow;
 let loadingWindow;
@@ -7,7 +9,69 @@ let PitType = "Inconnue"
 let PitName = ""
 let RecapPitName = PitName
 //let maintenanceWindow; // Ajout de cette ligne
-////////// Auto Updater 
+////////// Auto Updater - Bêta
+autoUpdater.setFeedURL({
+    provider: 'generic',
+    url: 'https://nisuky-devs.github.io/app/cyborgbulls/application/updater/updates.json'
+})
+///
+// Définissez le chemin de l'icône que vous souhaitez utiliser
+const iconPath = path.join(__dirname, '9102.png');
+
+autoUpdater.on('checking-for-update', () => {
+    dialog.showMessageBox({
+        type: 'info',
+        icon: iconPath, // Utilisez l'icône spécifiée
+        title: 'Vérification des mises à jour',
+        message: 'La vérification des mises à jour est en cours...',
+    });
+});
+
+autoUpdater.on('update-available', () => {
+    dialog.showMessageBox({
+        type: 'info',
+        icon: iconPath, // Utilisez l'icône spécifiée
+        title: 'Mise à jour disponible',
+        message: 'Une mise à jour est disponible. Le téléchargement est en cours',
+    });
+});
+
+autoUpdater.on('update-not-available', () => {
+    dialog.showMessageBox({
+        type: 'info',
+        icon: iconPath, // Utilisez l'icône spécifiée
+        title: 'Pas de mise à jour disponible',
+        message: 'Votre application est à jour. Aucune mise à jour disponible.',
+    });
+});
+
+autoUpdater.on('error', (error) => {
+    dialog.showErrorBox('Erreur de mise à jour', error == null ? "unknown" : (error.stack || error).toString());
+});
+
+autoUpdater.on('download-progress', (progressObj) => {
+    const logMessage = `Téléchargement de ${progressObj.percent}% (${progressObj.transferred}/${progressObj.total} octets)`;
+    console.log(logMessage);
+});
+
+autoUpdater.on('update-downloaded', () => {
+    dialog.showMessageBox({
+        type: 'info',
+        icon: iconPath, // Utilisez l'icône spécifiée
+        title: 'Mise à jour téléchargée',
+        message: 'La mise à jour a été téléchargée et est prête à être installée. Voulez-vous redémarrer l\'application pour appliquer la mise à jour maintenant ?',
+        buttons: ['Redémarrer', 'Plus tard']
+    }).then((response) => {
+        if (response.response === 0) {
+            autoUpdater.quitAndInstall();
+        }
+    });
+});
+
+autoUpdater.checkForUpdatesAndNotify();
+
+///
+
 
 /////////
 const createLoadingWindow = () => {
