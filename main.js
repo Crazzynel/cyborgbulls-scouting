@@ -1,5 +1,5 @@
 const { app, BrowserWindow, Menu, dialog } = require('electron');
-const { autoUpdater } = require('electron-updater')
+//const { autoUpdater } = require('electron-updater') -> Probleme de decla et de fonctionnement
 
 let mainWindow;
 let loadingWindow;
