@@ -22,3 +22,7 @@ function navigateToMatchScouting() {
 console.error("Licence: Absente")
 
 /// FIN DE CHAMP
+
+
+
+// Team list is stocked on the folder named "teams"
