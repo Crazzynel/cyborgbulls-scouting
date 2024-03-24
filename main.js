@@ -1,7 +1,5 @@
 const { app, BrowserWindow, Menu, dialog } = require('electron');
 const { autoUpdater } = require('electron-updater')
-const { path } = require('path')
-
 
 let mainWindow;
 let loadingWindow;
@@ -16,12 +14,12 @@ autoUpdater.setFeedURL({
 })
 ///
 // Définissez le chemin de l'icône que vous souhaitez utiliser
-const iconPath = path.join(__dirname, '9102.png');
+//const iconPath = path.join(__dirname, '9102.png');   icon: iconPath, Deleted Icon Format
 
 autoUpdater.on('checking-for-update', () => {
     dialog.showMessageBox({
         type: 'info',
-        icon: iconPath, // Utilisez l'icône spécifiée
+        //icon: iconPath, Deleted Icon Format
         title: 'Vérification des mises à jour',
         message: 'La vérification des mises à jour est en cours...',
     });
@@ -30,7 +28,7 @@ autoUpdater.on('checking-for-update', () => {
 autoUpdater.on('update-available', () => {
     dialog.showMessageBox({
         type: 'info',
-        icon: iconPath, // Utilisez l'icône spécifiée
+        //icon: iconPath, Deleted Icon Format
         title: 'Mise à jour disponible',
         message: 'Une mise à jour est disponible. Le téléchargement est en cours',
     });
@@ -39,9 +37,9 @@ autoUpdater.on('update-available', () => {
 autoUpdater.on('update-not-available', () => {
     dialog.showMessageBox({
         type: 'info',
-        icon: iconPath, // Utilisez l'icône spécifiée
+        //icon: iconPath, Deleted Icon Format
         title: 'Pas de mise à jour disponible',
-        message: 'Votre application est à jour. Aucune mise à jour disponible.',
+        message: 'Votre application est à jour. Aucune mise à jour n\'est requise.',
     });
 });
 
@@ -57,7 +55,7 @@ autoUpdater.on('download-progress', (progressObj) => {
 autoUpdater.on('update-downloaded', () => {
     dialog.showMessageBox({
         type: 'info',
-        icon: iconPath, // Utilisez l'icône spécifiée
+        //icon: iconPath, Deleted Icon Format
         title: 'Mise à jour téléchargée',
         message: 'La mise à jour a été téléchargée et est prête à être installée. Voulez-vous redémarrer l\'application pour appliquer la mise à jour maintenant ?',
         buttons: ['Redémarrer', 'Plus tard']
@@ -103,7 +101,7 @@ const createMainWindow = () => {
         width: 800,
         height: 600,
         show: false,
-        //icon: '9102.png'
+        icon: '9102.png'
         // Le logo est facultatif vu qu'il est déjà défini dans electron-builder.yaml
     });
 
