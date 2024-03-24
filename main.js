@@ -13,13 +13,9 @@ autoUpdater.setFeedURL({
     url: 'https://nisuky-devs.github.io/app/cyborgbulls/application/updater/updates.json'
 })
 ///
-// Définissez le chemin de l'icône que vous souhaitez utiliser
-//const iconPath = path.join(__dirname, '9102.png');   icon: iconPath, Deleted Icon Format
-
 autoUpdater.on('checking-for-update', () => {
     dialog.showMessageBox({
         type: 'info',
-        //icon: iconPath, Deleted Icon Format
         title: 'Vérification des mises à jour',
         message: 'La vérification des mises à jour est en cours...',
     });
@@ -28,7 +24,6 @@ autoUpdater.on('checking-for-update', () => {
 autoUpdater.on('update-available', () => {
     dialog.showMessageBox({
         type: 'info',
-        //icon: iconPath, Deleted Icon Format
         title: 'Mise à jour disponible',
         message: 'Une mise à jour est disponible. Le téléchargement est en cours',
     });
@@ -37,7 +32,6 @@ autoUpdater.on('update-available', () => {
 autoUpdater.on('update-not-available', () => {
     dialog.showMessageBox({
         type: 'info',
-        //icon: iconPath, Deleted Icon Format
         title: 'Pas de mise à jour disponible',
         message: 'Votre application est à jour. Aucune mise à jour n\'est requise.',
     });
@@ -55,7 +49,6 @@ autoUpdater.on('download-progress', (progressObj) => {
 autoUpdater.on('update-downloaded', () => {
     dialog.showMessageBox({
         type: 'info',
-        //icon: iconPath, Deleted Icon Format
         title: 'Mise à jour téléchargée',
         message: 'La mise à jour a été téléchargée et est prête à être installée. Voulez-vous redémarrer l\'application pour appliquer la mise à jour maintenant ?',
         buttons: ['Redémarrer', 'Plus tard']
@@ -69,7 +62,6 @@ autoUpdater.on('update-downloaded', () => {
 autoUpdater.checkForUpdatesAndNotify();
 
 ///
-
 
 /////////
 const createLoadingWindow = () => {
@@ -102,7 +94,6 @@ const createMainWindow = () => {
         height: 600,
         show: false,
         icon: '9102.png'
-        // Le logo est facultatif vu qu'il est déjà défini dans electron-builder.yaml
     });
 
     mainWindow.loadFile('index.html');
@@ -122,7 +113,7 @@ const createMainWindow = () => {
                 {
                     label: 'Retour à l\'accueil',
                     click: () => {
-                        mainWindow.loadFile('./index.html');  // Permet d'effectuer la recharge d'une page
+                        mainWindow.loadFile('./index.html');
                     } 
                 },
                 { type: 'separator' },
@@ -153,8 +144,6 @@ const createMainWindow = () => {
                     label:'Developer Console',
                     role: 'toggleDevTools'
                 }
-
-
             ]
         },
         {
@@ -203,5 +192,4 @@ app.on('activate', () => {
 function commentaire_main() {
     console.log('Unable to retrieve data from scouting.cyborgbulls.fr')
 }
-
 //// FIN DE CHAMP
