@@ -1,5 +1,5 @@
 autoUpdater.setFeedURL({
-    provider: 'generic',
+    provider: 'github',
     url: 'https://nisuky-devs.github.io/app/cyborgbulls/application/updater/updates.yml'
 })
 app.on('ready', () => {
