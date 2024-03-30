@@ -135,7 +135,5 @@ app.on('activate', () => {
 });
 
 //// CHAMP RESERVE AUX FONCTIONS
-function commentaire_main() {
-    console.log('Unable to retrieve data from scouting.cyborgbulls.fr')
-}
+
 //// FIN DE CHAMP

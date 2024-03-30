@@ -18,4 +18,4 @@ Malgré les licences libres, le contenu de l'application CyborgBulls reste restr
 
 ## Disponibilité du Code Source: 
 
-Certaines applications, en raison de la taille, ont été retirées. En cas de question, vous pouvez envoyer un mail à nakanosan@gmx.fr
+Certaines applications, en raison de la taille, n'ont pas été déployées. En cas de question, vous pouvez envoyer un mail à nakanosan@gmx.fr
