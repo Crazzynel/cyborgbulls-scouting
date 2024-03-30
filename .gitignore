@@ -1,4 +1,5 @@
 electron.exe
-./build/**
-./build
-./github/**
+/build/**
+/build
+/github/**
+/functions/safer.py
