@@ -1,6 +1,6 @@
 {
   "name": "scouting-app",
-  "version": "1.0.5",
+  "version": "1.0.6",
   "main": "main.js",
   "scripts": {
     "start": "electron .",
@@ -234,5 +234,13 @@
     "9102"
   ],
   "author": "Antoine CyborgBulls",
-  "license": "UNLICENSED"
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Crazzynel/cyborgbulls-scouting.git"
+  },
+  "bugs": {
+    "url": "https://github.com/Crazzynel/cyborgbulls-scouting/issues"
+  },
+  "homepage": "https://github.com/Crazzynel/cyborgbulls-scouting#readme"
 }

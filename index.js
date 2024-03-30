@@ -14,7 +14,7 @@ function navigateToPitScouting() {
 function navigateToMatchScouting() {
     // Ajoute le code pour naviguer vers la page de scouting match
     console.log('Navigating to Match Scouting');
-    window.location.href="./execute_scout/match/page.html"
+    window.location.href="./execute_scout/match/test.html"
     // win
 }
 

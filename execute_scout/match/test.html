@@ -1,96 +1,11 @@
 <!DOCTYPE html>
-<html>
+<html lang="fr">
 <head>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<link rel="stylesheet" href="scout.css" type="text/css">
 <script>let teleoperatedActions = []</script>
 <title>Scouting Page</title>
-<style>
-body {
-  font-family: Arial, sans-serif;
-  margin: 0;
-  padding: 0;
-}
-.container {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  padding: 20px;
-}
-.progress-bar {
-  width: 100%;
-  height: 30px;
-  background-color: #ddd;
-}
-.progress {
-  height: 30px;
-  background-color: #4caf50;
-  width: 0%;
-}
-.section {
-  margin: 20px 0;
-}
-.team-color-selection {
-  display: flex;
-  align-items: center;
-}
-.color {
-  width: 50px;
-  height: 50px;
-  border-radius: 50%;
-  margin-right: 10px;
-  cursor: pointer; /* Ajout de cette ligne pour le curseur */
-}
-.button-group {
-  display: flex;
-  flex-wrap: wrap;
-  margin: 10px 0;
-}
-.button {
-  width: 200px;
-  height: 50px;
-  margin: 10px;
-  border: none;
-  border-radius: 5px;
-  background-color: #4caf50;
-  color: white;
-  font-size: 18px;
-  cursor: pointer;
-}
-.summary-table {
-  width: 100%;
-  border-collapse: collapse;
-}
-.summary-table th,
-.summary-table td {
-  border: 1px solid black;
-  padding: 10px;
-}
-.summary-table th {
-  background-color: #4caf50;
-  color: white;
-}
-.summary-table td {
-  text-align: center;
-}
-.color-label {
-  display: inline-block;
-  width: 50px;
-  height: 50px;
-  border-radius: 50%;
-  margin-right: 10px;
-  cursor: pointer;
-}
-
-#redColor + .color-label {
-  background-color: red;
-}
-
-#blueColor + .color-label {
-  background-color: blue;
-}
-
-</style>
 </head>
 <body>
 <div class="container">
@@ -108,9 +23,9 @@ body {
 
   <input type="hidden" value="red" id="color1" /> <!-- Ajout de cette ligne -->
   <input type="hidden" value="blue" id="color2" /> <!-- Ajout de cette ligne -->
-  <input type="number" placeholder="Team member 1" id="member1" />
-  <input type="number" placeholder="Team member 2" id="member2" />
-  <input type="number" placeholder="Team member 3" id="member3" />
+  <input type="number" placeholder="Team number 1" id="member1" />
+  <input type="number" placeholder="Team number 2" id="member2" />
+  <input type="number" placeholder="Team number 3" id="member3" />
 </div>
 <div class="section autonomous-section">
 <h2>AUTONOMOUS Section</h2>
@@ -148,171 +63,6 @@ body {
 </div>
 
 <!-- Integration of JavaScript code -->
-<script>
-// Code for Progress Bar
-window.addEventListener("load", (event) => {
-  const progressBar = document.querySelector(".progress");
-  function updateProgress(value) {
-    progressBar.style.width = value + "%";
-  }
-
-  // Code for Team Color Selection
-  const color1 = document.getElementById("color1");
-  const color2 = document.getElementById("color2");
-  function getSelectedColor() {
-    const color1 = document.getElementById("color1");
-    const color2 = document.getElementById("color2");
-    if (color1.checked) {
-        return color1.value;
-    } else if (color2.checked) {
-        return color2.value;
-    }
-}
-
-  // Code for Autonomous Section
-  const projection = document.getElementById("projection");
-  const zoneExit = document.getElementById("zoneExit");
-  const hanging = document.getElementById("hanging");
-  const ringRetrieval = document.getElementById("ringRetrieval");
-  const autonomousActions = [
-    { action: "Projection", clicks: 0, points: 5 },
-    { action: "Zone exit", clicks: 0, points: 5 },
-    { action: "Hanging", clicks: 0, points: 10 },
-    { action: "Ring retrieval", clicks: 0, points: 10 },
-  ];
-  function recordAutonomous(action) {
-    const color = getSelectedColor();
-    const teamMembers = [
-      document.getElementById("member1").value,
-      document.getElementById("member2").value,
-      document.getElementById("member3").value,
-    ].filter((value) => value !== "");
-    autonomousActions
-      .filter((item) => item.action === action)
-      .forEach((item) => {
-        item.clicks++;
-        const summaryTableBody = document.querySelector(".summary-table tbody");
-        const existingRow = Array.from(summaryTableBody.rows).find(
-          (row) => row.cells[0].textContent.trim() === action
-        );
-        if (existingRow) {
-          existingRow.cells[1].textContent = item.clicks.toString();
-        } else {
-          const row = document.createElement("tr");
-          row.innerHTML = `
-            <td>${action}</td>
-            <td>${item.clicks}</td>
-            <td>${item.points}</td>
-          `;
-          summaryTableBody.appendChild(row);
-        }
-        // Add the color and team members to the last row
-        const lastRow = summaryTableBody.lastElementChild;
-        if (color && teamMembers.length > 0) {
-          lastRow.insertAdjacentHTML(
-            "beforeend",
-            `<td>${color}, ${teamMembers.join(", ")}</td>`
-          );
-        }
-      });
-  }
-  projection.addEventListener("click", () => {
-    recordAutonomous("Projection");
-  });
-  zoneExit.addEventListener("click", () => {
-    recordAutonomous("Zone exit");
-  });
-  hanging.addEventListener("click", () => {
-    recordAutonomous("Hanging");
-  });
-  ringRetrieval.addEventListener("click", () => {
-    recordAutonomous("Ring retrieval");
-  });
-
-  // Code for TELEOPERATED Section
-  const projectionSpeaker = document.getElementById("projectionSpeaker");
-  const projectionAmpli = document.getElementById("projectionAmpli");
-  const hangingTeleoperated = document.getElementById("hangingTeleoperated");
-  const trap = document.getElementById("trap");
-  const lancerTeleoperated = document.getElementById("lancerTeleoperated");
-  function recordTeleoperated(action) {
-    let humanPlayerNumber = ""; // Initialiser à une chaîne vide
-    if (action === "Lancer J.H.") { // Vérifier si l'action est "Lancer J.H."
-        humanPlayerNumber = document.getElementById("humanPlayerNumber").value; // Si oui, obtenir le numéro du joueur humain
-    }
-    const teleopSummary = document.getElementById("teleopSummary");
-    const existingRow = Array.from(teleopSummary.rows).find(
-      (row) => row.cells[0].textContent.trim() === action
-    );
-    if (existingRow) {
-      existingRow.cells[1].textContent = parseInt(existingRow.cells[1].textContent) + 1;
-    } else {
-      const row = document.createElement("tr");
-      row.innerHTML = `<td>${action}</td><td>1</td><td>0</td><td>${humanPlayerNumber}</td>`;
-      teleopSummary.appendChild(row);
-    }
-  }
-  projectionSpeaker.addEventListener("click", () => {
-    recordTeleoperated("Projection (Speaker)");
-  });
-  projectionAmpli.addEventListener("click", () => {
-    recordTeleoperated("Projection (Ampli)");
-  });
-  hangingTeleoperated.addEventListener("click", () => {
-    recordTeleoperated("Hanging");
-  });
-  trap.addEventListener("click", () => {
-    recordTeleoperated("Trap");
-  });
-  lancerTeleoperated.addEventListener("click", () => {
-  recordTeleoperated("Lancer J.H.");
-});
-
-
-// Code for Generation Section
-// Code pour générer le CSV
-const generateCSVButton = document.getElementById("generateCSV");
-
-function generateCSV() {
-  const teleoperatedActionsCSV = new Blob(
-    [
-      "Téléopérated Actions\n" +
-        "Action,Clicks,Points,Player Number\n" +
-        Array.from(document.querySelectorAll("#teleopSummary tr")).map(row => {
-          const cells = Array.from(row.querySelectorAll("td"));
-          return cells.map(cell => cell.textContent.trim()).join(",");
-        }).join("\n").replace(/,(\n|$)/g, "$1")
-    ],
-    { type: "text/csv;charset=utf-8" }
-  );
-  const teleoperatedActionsLink = document.createElement("a");
-  teleoperatedActionsLink.href = URL.createObjectURL(teleoperatedActionsCSV);
-  teleoperatedActionsLink.download = "teleoperated_actions.csv";
-  teleoperatedActionsLink.click();
-}
-
-
-generateCSVButton.addEventListener("click", () => {
-  generateCSV();
-});
-
-
-  // Initialize the progress bar
-  updateProgress(
-    100 *
-      (autonomousActions
-        .map(({ clicks }) => clicks)
-        .reduce((a, b) => a + b, 0) /
-        (autonomousActions
-          .map(({ clicks }) => clicks)
-          .reduce((a, b) => a + b, 0) +
-          teleoperatedActions
-            .map(({ clicks }) => clicks)
-            .reduce((a, b) => a + b, 0))
-      )
-    )
-});
-
-</script>
+<script src="scout.js"> </script>
 </body>
 </html>
