@@ -8,7 +8,7 @@
   },
   "devDependencies": {
     "csv-writer": "^1.6.0",
-    "electron": "^29.1.1",
+    "electron": "^29.1.6",
     "electron-builder": "^24.13.3",
     "prompt-sync": "^4.2.0"
   },
