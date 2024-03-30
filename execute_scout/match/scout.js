@@ -108,7 +108,7 @@ window.addEventListener("load", (event) => {
     recordTeleoperated("Projection (Ampli)");
   });
   hangingTeleoperated.addEventListener("click", () => {
-    recordTeleoperated("Hanging");
+    recordTeleoperated("Hanging (Teleop)");
   });
   trap.addEventListener("click", () => {
     recordTeleoperated("Trap");
