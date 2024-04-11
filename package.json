@@ -203,7 +203,7 @@
     "strip-ansi-cjs": "^6.0.1",
     "sumchecker": "^3.0.1",
     "supports-color": "^7.2.0",
-    "tar": "^6.2.0",
+    "tar": "^6.2.1",
     "tar-stream": "^2.2.0",
     "temp-file": "^3.4.0",
     "tmp": "^0.2.3",
