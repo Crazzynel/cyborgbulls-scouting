@@ -1,5 +1,5 @@
 APPLiCATION INDISPONIBLE POUR LE MOMENT - Incomplète
-> [!WARNING]  
+> [!ERROR]  
 > **Des modifications majeures de la structure de ce projet sont en cours**
 > 
 > Le fonctionnement du code risque de changer de manière importante, merci de ne pas merge sur `main`
